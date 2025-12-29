@@ -1,0 +1,26 @@
+<h1>Корзина</h1>
+{%if vsetovari%}
+    {% for t in vsetovari%}
+        <h1>{{t.tovar.ima}} {{t.kolichestvo}}</h1>
+        <form  method="post" action="/dobavit_iz_korzina/">
+            {%csrf_token%}
+            <button>Добавить из корзины</button>
+            <input type="hidden" value="{{t.tovar.id}}" name="id">
+        </form>
+        {%if t.tovar.kolichestvo > 0%}
+            <form method="post" action="/plus/">
+                {%csrf_token%}
+                <button>+</button>
+                <input type="hidden" value="{{t.tovar.id}}" name="id">
+            </form>
+            <form method="post" action="/minus/">
+                {%csrf_token%}
+                <button>-</button>
+                <input type="hidden" value="{{t.tovar.id}}" name="id">
+            </form>
+        {%endif%}
+    {%endfor%}
+{%else%}
+    <h1>купи что нибудь</h1>
+{%endif%}
+<h3><a href = "/">здесь</a></h3>

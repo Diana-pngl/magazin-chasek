@@ -1,0 +1,28 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.title }}</title>
+    <link rel="stylesheet" href="{%static 'styles_item.css'%}">
+</head>
+<body>
+    <div class="product-page-container">
+        <div class="product-image-section">
+            <img src="{{ tovar.image.url }}" alt="{{ tovar.title }}">
+        </div>
+        <div class="product-details-section">
+            <h1>{{ tovar.ima }}</h1>
+            <p class="product-price">${{ tovar.chena }}</p>
+            <p><strong>material:</strong> {{ tovar.material }}</p>
+            <p><strong>obiem:</strong> {{ tovar.obiem }}</p>
+            <p><strong>data_proizvodstva:</strong> {{ tovar.data_proizvodstva }}</p>
+            <p class="product-description">{{ tovar.opisanie }}</p>
+            <p><strong>kolichestvo:</strong> {{ tovar.kolichestvo }}</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <a href="/" class="back-to-list">Back to Items List</a>
+        </div>
+    </div>
+</body>
+</html>

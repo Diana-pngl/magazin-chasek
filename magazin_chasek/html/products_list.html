@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Наши товары</h2>
+    <div class="product-grid">
+        {%for tovar in tovars %} 
+            <div class="product-card">
+                <a href="/kartacka/{{tovar.id}}/"><img src="{{tovar.image.url}}" alt="Product 1"></a>
+                <h3><a href = "/kartacka/{{tovar.id}}/">{{tovar.ima}}</a></h3>
+                <p class="price">{{tovar.chena}} </p>
+                {%if tovar.kolichestvo > 0%}
+                    <form  method="post" action="/dobavit_v_korzina/">
+                        {%csrf_token%}
+                        <button>Добавить в корзину (осталось {{tovar.kolichestvo}})</button>
+                        <input type="hidden" value="{{tovar.id}}" name="id">
+                    </form>
+                {%else%}
+                    <h1>товара нет</h1>
+                {%endif%}
+            </div>
+        {%endfor%}
+    </div>
+</div>
